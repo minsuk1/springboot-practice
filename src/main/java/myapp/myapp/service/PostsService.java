@@ -19,10 +19,11 @@ public class PostsService {
 
    private final PostsRepository postsRepository;
 
+   //
    @Transactional(readOnly = true)
    public List<PostsListResponseDto> findAllDesc() {
       return postsRepository.findAllDesc().stream()
-              .map(PostsListResponseDto::new)
+              .map(PostsListResponseDto::new) //map(posts -> new PostsListResponseDto(posts)
               .collect(Collectors.toList());
    }
 
