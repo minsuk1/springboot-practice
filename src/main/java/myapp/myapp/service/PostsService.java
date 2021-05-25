@@ -3,19 +3,28 @@ package myapp.myapp.service;
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.domain.posts.Posts;
 import myapp.myapp.domain.posts.PostsRepository;
+import myapp.myapp.web.dto.PostsListResponseDto;
 import myapp.myapp.web.dto.PostsResponseDto;
 import myapp.myapp.web.dto.PostsSaveRequestDto;
 import myapp.myapp.web.dto.PostsUpdateRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.Entity;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class PostsService {
 
    private final PostsRepository postsRepository;
+
+   @Transactional(readOnly = true)
+   public List<PostsListResponseDto> findAllDesc() {
+      return postsRepository.findAllDesc().stream()
+              .map(PostsListResponseDto::new)
+              .collect(Collectors.toList());
+   }
 
    @Transactional
    public Long save(PostsSaveRequestDto requestDto){
