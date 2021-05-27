@@ -2,6 +2,8 @@ package myapp.myapp.config.auth.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Builder;
+import lombok.Getter;
 import myapp.myapp.domain.user.Role;
 import myapp.myapp.domain.user.User;
 
