@@ -3,14 +3,17 @@ package myapp.myapp.service;
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.domain.posts.Posts;
 import myapp.myapp.domain.posts.PostsRepository;
-import myapp.myapp.web.dto.PostsListResponseDto;
-import myapp.myapp.web.dto.PostsResponseDto;
-import myapp.myapp.web.dto.PostsSaveRequestDto;
-import myapp.myapp.web.dto.PostsUpdateRequestDto;
+import myapp.myapp.domain.user.User;
+import myapp.myapp.domain.user.UserRepository;
+import myapp.myapp.web.dto.posts.PostsListResponseDto;
+import myapp.myapp.web.dto.posts.PostsResponseDto;
+import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
+import myapp.myapp.web.dto.posts.PostsUpdateRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.Entity;
+
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -18,6 +21,7 @@ import java.util.stream.Collectors;
 public class PostsService {
 
    private final PostsRepository postsRepository;
+   private final UserRepository userRepository;
 
    //
    @Transactional(readOnly = true)
@@ -28,9 +32,13 @@ public class PostsService {
    }
 
    @Transactional
-   public Long save(PostsSaveRequestDto requestDto){
-      return postsRepository.save(requestDto.toEntity()).
-              getId();
+   public Long save(String name, PostsSaveRequestDto requestDto){
+      User user = userRepository.findByEmail(name)
+              .orElseThrow(() -> new IllegalArgumentException("사용자 없음"));;
+      Posts post = Posts.create(requestDto.getTitle(),
+              requestDto.getContent(), user);
+
+      return postsRepository.save(post).getId();
    }
 
    @Transactional

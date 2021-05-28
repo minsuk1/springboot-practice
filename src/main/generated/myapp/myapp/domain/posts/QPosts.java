@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,11 +18,11 @@ public class QPosts extends EntityPathBase<Posts> {
 
     private static final long serialVersionUID = 119092256L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QPosts posts = new QPosts("posts");
 
     public final myapp.myapp.domain.QBaseTimeEntity _super = new myapp.myapp.domain.QBaseTimeEntity(this);
-
-    public final StringPath author = createString("author");
 
     public final StringPath content = createString("content");
 
@@ -35,16 +36,27 @@ public class QPosts extends EntityPathBase<Posts> {
 
     public final StringPath title = createString("title");
 
+    public final myapp.myapp.domain.user.QUser user;
+
     public QPosts(String variable) {
-        super(Posts.class, forVariable(variable));
+        this(Posts.class, forVariable(variable), INITS);
     }
 
     public QPosts(Path<? extends Posts> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QPosts(PathMetadata metadata) {
-        super(Posts.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QPosts(PathMetadata metadata, PathInits inits) {
+        this(Posts.class, metadata, inits);
+    }
+
+    public QPosts(Class<? extends Posts> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.user = inits.isInitialized("user") ? new myapp.myapp.domain.user.QUser(forProperty("user")) : null;
     }
 
 }

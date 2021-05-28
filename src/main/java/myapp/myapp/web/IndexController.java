@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import myapp.myapp.config.auth.LoginUser;
 import myapp.myapp.config.auth.dto.SessionUser;
 import myapp.myapp.service.PostsService;
-import myapp.myapp.web.dto.PostsResponseDto;
+import myapp.myapp.web.dto.posts.PostsResponseDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

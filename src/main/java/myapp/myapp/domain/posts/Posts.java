@@ -5,13 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import myapp.myapp.domain.BaseTimeEntity;
+import myapp.myapp.domain.user.User;
+import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Optional;
 // @NoArgsConstructor
 // public Posts() {} 같은 효과
 
@@ -30,13 +29,19 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Builder
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content, User user) {
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.user = user;
+    }
+
+    public static Posts create(String title, String content, User user) {
+        return new Posts(title, content, user);
     }
 
     public void update(String title, String content) {

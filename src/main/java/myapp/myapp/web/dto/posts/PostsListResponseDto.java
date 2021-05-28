@@ -1,4 +1,4 @@
-package myapp.myapp.web.dto;
+package myapp.myapp.web.dto.posts;
 
 import lombok.Getter;
 import myapp.myapp.domain.posts.Posts;
@@ -14,7 +14,7 @@ public class PostsListResponseDto {
     public PostsListResponseDto(Posts entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
-        this.author = entity.getAuthor();
+        this.author = entity.getUser().getName();
         this.modifiedDate = entity.getModifiedDate();
     }
 }

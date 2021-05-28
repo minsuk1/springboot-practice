@@ -1,10 +1,12 @@
 package myapp.myapp.web;
 
 import lombok.RequiredArgsConstructor;
+import myapp.myapp.config.auth.LoginUser;
+import myapp.myapp.config.auth.dto.SessionUser;
 import myapp.myapp.service.PostsService;
-import myapp.myapp.web.dto.PostsResponseDto;
-import myapp.myapp.web.dto.PostsSaveRequestDto;
-import myapp.myapp.web.dto.PostsUpdateRequestDto;
+import myapp.myapp.web.dto.posts.PostsResponseDto;
+import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
+import myapp.myapp.web.dto.posts.PostsUpdateRequestDto;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -19,8 +21,8 @@ public class PostsApiController {
     }
 
     @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
-        return postsService.save(requestDto);
+    public Long save(@LoginUser SessionUser user, @RequestBody PostsSaveRequestDto requestDto) {
+        return postsService.save(user.getEmail(), requestDto);
     }
 
     @PutMapping("/api/v1/posts/{id}")
