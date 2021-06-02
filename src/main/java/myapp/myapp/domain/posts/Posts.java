@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import myapp.myapp.domain.BaseTimeEntity;
+import myapp.myapp.domain.LikePosts.LikePosts;
 import myapp.myapp.domain.user.User;
 import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Optional;
 // @NoArgsConstructor
 // public Posts() {} 같은 효과
@@ -32,6 +34,9 @@ public class Posts extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "posts")
+    private List<LikePosts> likePosts;
 
     @Builder
     public Posts(String title, String content, User user) {

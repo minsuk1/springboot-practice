@@ -23,7 +23,6 @@ public class PostsService {
    private final PostsRepository postsRepository;
    private final UserRepository userRepository;
 
-   //
    @Transactional(readOnly = true)
    public List<PostsListResponseDto> findAllDesc() {
       return postsRepository.findAllDesc().stream()
