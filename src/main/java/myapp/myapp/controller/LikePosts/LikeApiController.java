@@ -1,10 +1,9 @@
-package myapp.myapp.web;
+package myapp.myapp.controller.LikePosts;
 
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.config.auth.LoginUser;
 import myapp.myapp.config.auth.dto.SessionUser;
-import myapp.myapp.service.LikePostsService;
-import myapp.myapp.web.dto.posts.PostsResponseDto;
+import myapp.myapp.service.likeposts.LikePostsService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

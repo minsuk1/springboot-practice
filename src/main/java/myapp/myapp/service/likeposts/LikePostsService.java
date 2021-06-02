@@ -1,4 +1,4 @@
-package myapp.myapp.service;
+package myapp.myapp.service.likeposts;
 
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.domain.LikePosts.LikePosts;

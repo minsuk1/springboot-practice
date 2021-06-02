@@ -1,4 +1,4 @@
-package myapp.myapp.web.dto.posts;
+package myapp.myapp.service.posts.dto;
 
 import lombok.Getter;
 import myapp.myapp.domain.posts.Posts;

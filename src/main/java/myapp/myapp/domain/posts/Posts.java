@@ -7,12 +7,9 @@ import lombok.NoArgsConstructor;
 import myapp.myapp.domain.BaseTimeEntity;
 import myapp.myapp.domain.LikePosts.LikePosts;
 import myapp.myapp.domain.user.User;
-import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Optional;
 // @NoArgsConstructor
 // public Posts() {} 같은 효과
 

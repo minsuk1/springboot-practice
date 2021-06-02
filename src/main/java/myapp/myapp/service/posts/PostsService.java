@@ -1,19 +1,18 @@
-package myapp.myapp.service;
+package myapp.myapp.service.posts;
 
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.domain.posts.Posts;
 import myapp.myapp.domain.posts.PostsRepository;
 import myapp.myapp.domain.user.User;
 import myapp.myapp.domain.user.UserRepository;
-import myapp.myapp.web.dto.posts.PostsListResponseDto;
-import myapp.myapp.web.dto.posts.PostsResponseDto;
-import myapp.myapp.web.dto.posts.PostsSaveRequestDto;
-import myapp.myapp.web.dto.posts.PostsUpdateRequestDto;
+import myapp.myapp.service.posts.dto.PostsListResponseDto;
+import myapp.myapp.service.posts.dto.PostsResponseDto;
+import myapp.myapp.service.posts.dto.PostsSaveRequestDto;
+import myapp.myapp.service.posts.dto.PostsUpdateRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor

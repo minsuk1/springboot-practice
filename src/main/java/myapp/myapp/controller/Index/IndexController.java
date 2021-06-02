@@ -1,10 +1,10 @@
-package myapp.myapp.web;
+package myapp.myapp.controller.Index;
 
 import lombok.RequiredArgsConstructor;
 import myapp.myapp.config.auth.LoginUser;
 import myapp.myapp.config.auth.dto.SessionUser;
-import myapp.myapp.service.PostsService;
-import myapp.myapp.web.dto.posts.PostsResponseDto;
+import myapp.myapp.service.posts.PostsService;
+import myapp.myapp.service.posts.dto.PostsResponseDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
