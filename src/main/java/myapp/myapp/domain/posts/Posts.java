@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import myapp.myapp.domain.BaseTimeEntity;
-import myapp.myapp.domain.LikePosts.LikePosts;
 import myapp.myapp.domain.user.User;
-
 import javax.persistence.*;
 import java.util.List;
 // @NoArgsConstructor
@@ -31,9 +29,6 @@ public class Posts extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "posts")
-    private List<LikePosts> likePosts;
 
     @Builder
     public Posts(String title, String content, User user) {

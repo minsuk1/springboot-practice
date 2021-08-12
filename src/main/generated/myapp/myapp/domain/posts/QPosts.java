@@ -31,8 +31,6 @@ public class QPosts extends EntityPathBase<Posts> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final ListPath<myapp.myapp.domain.LikePosts.LikePosts, myapp.myapp.domain.LikePosts.QLikePosts> likePosts = this.<myapp.myapp.domain.LikePosts.LikePosts, myapp.myapp.domain.LikePosts.QLikePosts>createList("likePosts", myapp.myapp.domain.LikePosts.LikePosts.class, myapp.myapp.domain.LikePosts.QLikePosts.class, PathInits.DIRECT2);
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
